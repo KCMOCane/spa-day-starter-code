@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> xmlns:th = "http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <title>Welcome</title>
+    <title>Title</title>
+
 </head>
 <body>
-    <p th:text = "'Welcome ' + ${user.username} + '!'"></p>
-    <a th:href="@{/}">
-        Select your spa services here
-    </a>
+    <h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Verify</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+            </thead>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.verify}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+            </tr>
+        </table>
+    </h3>
+    <a th:href="@{}">Return to Service Selection<</a>
 </body>
 </html>

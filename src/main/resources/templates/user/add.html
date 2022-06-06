@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <title>Sign Up</title>
+    <title>Title</title>
 </head>
 <body>
-    <form method = 'post' th:action="@{/user}">
-        <label>
-            Username:
-            <input type = 'text' name = 'username' th:value="${username}">
-        </label>
+<form method="post" th:action ="@{/user/add}">
+    <label>
+        <input type="text" name="username">
+    </label>
+    <label>Email:
+        <input type="email" name="email">
+    </label>
+    <label>Password:
+        <input type="password" name="password">
+    </label>
+    <label>Email:
+        <input type="password" name="verify">
+    </label>
+    <input type="submit" value="Submit">
 
-        <label>
-            Email:
-            <input type = 'email' name = 'email' th:value="${email}">
-        </label>
+</form>
 
-        <label>
-            Password:
-            <input type = 'password' name = 'password'>
-        </label>
-
-        <label>
-            Verify Password:
-            <input type = 'password' name = 'verify'>
-        </label>
-
-        <p th:text="${error}"></p>
-
-        <input type = 'submit' value = 'Sign Up'>
-    </form>
-
+<p> th:if=""></p>
 </body>
 </html>
+
+import org.launchcode.spaday.models.User;
+import org.springframework.stereotype.Controller;
+import org.springgramework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springgrameowrk.web.bind.annotation.RequestMapping;
+@Controller
+@RequestMapping("user")
+public class UserController {
+    @GetMapping("add")
+    public String displayAddUserForm () {
+        return "user/add";
+    }
+@PostMapping("add")
+    public String processAddUserForm(Model, model, @ModelAttribute User user, String verify
+    if

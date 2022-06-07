@@ -11,19 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @GetMapping("add")
-    public String displayAddUserForm () {
+    public String displayAddUserForm (Model model) {
+        model.addAttribute(new User());
         return "user/add";
     }
 
     @PostMapping("add")
-    public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
-        if(!user.getPassword().equals(verify)) {
-            model.addAttribute("error", "Passowrds do not match!")
+    public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors){
+        if(errors.hasErrors()) {
+            model.addAttribute("error", errors);
         }
-        if(!verify.equals(user.getPassword())){
-            return "user/add";
-        }
-        return "user/index;"
+                    return "user/add";
     }
 
 }
+
